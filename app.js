@@ -1,8 +1,11 @@
 var express = require('express')
+var path = require('path')
 var port = process.env.PORT || 3001
 var app = express()
 
 
+// app.set("view","./view/pages")
+app.set('views', __dirname + '/views/pages');
 app.set('view engine','ejs')
 app.listen(port)
 
@@ -11,7 +14,7 @@ console.log("开始启动:" + 'http://127.0.0.1:' +port);
 
 //如果不愿意使用默认的layout.ejs，则可以设置layout为false
 app.set('view options',{
-    "layout":false
+    "layout":false,
 })
 
 
