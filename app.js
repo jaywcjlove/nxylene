@@ -17,6 +17,12 @@ app.set('view options',{
     "layout":false,
 })
 
+// 404
+app.get('/*', function(request, response){
+    response.render('404', {
+        title: 'No Found'
+    })
+});
 
 //首页
 app.get('/',function(request,response){
@@ -45,3 +51,4 @@ app.get('/admin/list',function(request,response){
         title:"JSLite 后台列表页面"
     })
 })
+
