@@ -4,8 +4,6 @@ var port = process.env.PORT || 3001
 var app = express()
 
 
-
-
 // app.set("view","./view/pages")
 app.set('views', __dirname + '/views/pages');
 app.set('view engine','ejs')
@@ -23,10 +21,19 @@ console.log("==========================");
 console.log("开始启动:" + 'http://127.0.0.1:' +port);
 
 
-var routes = require('./routes/index');
-var un404 = require('./routes/404');
-app.use('/', routes);
-app.use('/*', un404);
+var index = require('./routes/index');
+    und = require('./routes/404');
+    admin = require('./routes/admin');
+
+
+index(app);
+admin(app);
+und(app);
+
+
+// app.use('/', routes.index);
+// app.use('/*', routes.undefined);
+// app.use('/detail',detail);
 
 // // 404
 // app.get('/*', function(request, response){
