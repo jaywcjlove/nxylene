@@ -2,10 +2,16 @@
 
 
 
-## 启动
+## 安装依赖 & 启动
 
 ```
+
+//进入nodeexample目录安装依赖
+npm install
+
+//启动项目
 node app.js
+
 ```
 
 
