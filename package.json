@@ -1,7 +1,7 @@
 {
   "name": "nodetest",
   "version": "0.0.1",
-  "description":"学习nodejs",
+  "description": "学习nodejs",
   "scripts": {
     "start": "node app.js"
   },
@@ -9,5 +9,9 @@
     "ejs": "^2.3.1",
     "express": "^4.12.4",
     "mongoose": "^4.0.5"
+  },
+  "dependencies": {
+    "cheerio": "^0.19.0",
+    "superagent": "^1.2.0"
   }
 }
