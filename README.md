@@ -1,6 +1,6 @@
 # nodejs例子
 
-
+练习nodejs 和搜集的一些资料
 
 ## 安装依赖 & 启动
 
@@ -15,25 +15,40 @@ node app.js
 ```
 
 
+## 文件夹结构说明
+
+- routes/ 文件夹负责路由订制
+- controllers/ 文件夹负责业务逻辑处理
+- models/ 文件夹负责存放数据结构模型
+- public/ 前端静态资源文件存放目录
+- lib/ 存放工具模块
+- views/ 存在静态模版文件
+
 
 ## 相关依赖
 
-- ejs:模板引擎选择ejs，我只想要一个简单的帮我填充数据的模板。[github](https://github.com/tj/ejs)
-- express:一个服务器端的基于 Node.js 的 JavaScript 开发框架。 [官网](http://expressjs.com/)
+### 依赖说明
+
+- ejs:模板引擎选择ejs，我只想要一个简单的帮我填充数据的模板。[github](https://github.com/tj/ejs) [文档](http://www.embeddedjs.com/) 
+- express:一个服务器端的基于 Node.js 的 JavaScript 开发框架。 [官方文档](http://expressjs.com/) [中文文档](http://expressjs.jser.us/)  
 - mongoose:让NodeJS更容易操作Mongodb数据库 [官网](http://mongoosejs.com/)
 
 - Node.js [官方文档](http://nodejs.org/api/)
 - Node.js [中文文档](http://nodejs.jsbin.cn/api/)
-- Express [官方文档](http://expressjs.com/)
-- Express [中文文档](http://expressjs.jser.us/)
-- Jade [官方文档](http://jade-lang.com/)
-- EJS [文档](http://www.embeddedjs.com/)
+- jade 模板引擎 [官方文档](http://jade-lang.com/) 
+- superagent 是个 http 方面的库，可以发起 get 或 post 请求。[github](http://visionmedia.github.io/superagent/)
+- cheerio 大家可以理解成一个 Node.js 版的 jquery，用来从网页中以 css selector 取数据，使用方式跟 jquery 一样一样的。[github](https://github.com/cheeriojs/cheerio )
 
+### 安装依赖
+
+```
+npm install PACKAGE_NAME --save 
+```
 
 ## 包管理工具
 
-NPM：https://www.npmjs.org/ (官方)
-CNPM：http://cnpmjs.org/、http://npm.taobao.org/ (淘宝)
+NPM：https://www.npmjs.org/ (官方)  
+CNPM：http://cnpmjs.org/ 、 http://npm.taobao.org/ (淘宝)
 
 
 ## 数据库
@@ -46,7 +61,8 @@ CNPM：http://cnpmjs.org/、http://npm.taobao.org/ (淘宝)
 
 ## 热门包
 
-- Grunt：http://gruntjs.com/ （英文）、http://gruntjs.cn/（中文）
+- Grunt：http://gruntjs.com/ （英文）、 http://gruntjs.cn/（中文）
+- stylus：http://learnboost.github.io/stylus/
 - Yeoman：http://yeoman.io/
 - Socket.io：http://socket.io/
 - mocha：http://visionmedia.github.io/mocha/
