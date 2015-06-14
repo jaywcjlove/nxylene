@@ -1,15 +1,20 @@
 <% include ../includes/header %>
-<h1>图片列表</h1>
+<header>
+    <h1>图片列表</h1>
+</header>
 
 
 <% if(pic_list.length){ %>
-<ul>
-    <% pic_list.forEach(function(dt){ 
-        console.log("message:",dt);
-        %>  
-      <li><a href="/pic/<%dt._id%>"><img src="<%=dt.url%>"/><%= dt.name %></li>  
-    <% }) %>
-</ul>
+<article class="pic_list wp">
+    <ul>
+        <% pic_list.forEach(function(dt){ %>  
+        <li>
+            <a href="/pic/<%=dt._id%>"><i><img src="<%=dt.url%>"/></i><span><%= dt.name %></span></a>
+        </li>
+        <% }) %>
+    </ul>
+    <div class="cl"></div>
+</article>
 <% } %>
 
 

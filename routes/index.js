@@ -14,7 +14,7 @@ module.exports = function (app) {
             },{
                 name: "长腿美女精美壁",
                 _id: 2,
-                url: "http://www.tgbus.com/image.html?url=http://iphone.tgbus.com/UploadFiles/201406/2014061911370889.jpg"
+                url: "http://img.51ztzj.com/upload/image/20140925/sj201409251005_279x419.jpg"
             },{
                 name: "长腿美女精美壁",
                 _id: 3,
