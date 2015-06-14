@@ -6,11 +6,15 @@
 
 ```
 
-//进入nodeexample目录安装依赖
-npm install
+# 进入nodeexample目录安装依赖
+$ npm install
 
-//启动项目
-node app.js
+# 如果修改样式进入 nodeexample/public 目录运行
+$ npm install # 安装依赖
+$ grunt   #静态资源管理
+
+# 启动项目
+$ node app.js
 
 ```
 
