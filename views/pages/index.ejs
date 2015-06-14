@@ -1,6 +1,16 @@
 <% include ../includes/header %>
+<h1>图片列表</h1>
 
-这里是首页
+
+<% if(pic_list.length){ %>
+<ul>
+    <% pic_list.forEach(function(dt){ 
+        console.log("message:",dt);
+        %>  
+      <li><a href="/pic/<%dt._id%>"><img src="<%=dt.url%>"/><%= dt.name %></li>  
+    <% }) %>
+</ul>
+<% } %>
 
 
 <% include ../includes/footer %>
