@@ -27,10 +27,29 @@ module.exports = function (app) {
                 name: "长腿美女精美壁",
                 _id: 5,
                 url: "http://i.bufan.com/upload/2014-06-24/14035889302261.jpg"
+            },{
+                name: "长腿美女精美壁",
+                _id: 3,
+                url: "http://iphone.tgbus.com/UploadFiles/201506/2015060217560183.png"
+            },{
+                name: "长腿美女精美壁",
+                _id: 4,
+                url: "http://i.bufan.com/upload/2014-07-09/14048768403033.jpg"
+            },{
+                name: "长腿美女精美壁",
+                _id: 5,
+                url: "http://i.bufan.com/upload/2014-06-24/14035889302261.jpg"
             }]
         });
     });
     app.get('/pic/:id', function (req, res) {
-        res.render('detail', { title: '详情页面' });
+        res.render('detail', { 
+            title: '详情页面' ,
+            pic_list:{
+                name: "长腿美女精美壁",
+                _id: 5,
+                url: "http://i.bufan.com/upload/2014-06-24/14035889302261.jpg"
+            }
+        });
     });
 }

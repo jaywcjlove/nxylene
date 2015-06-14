@@ -1,7 +1,5 @@
 <% include ../includes/header %>
-<header>
-    <h1>图片列表</h1>
-</header>
+<%- include('../includes/nav', {title:"图片列表首页"}); %>
 
 
 <% if(pic_list.length){ %>
@@ -9,7 +7,7 @@
     <ul>
         <% pic_list.forEach(function(dt){ %>  
         <li>
-            <a href="/pic/<%=dt._id%>"><i><img src="<%=dt.url%>"/></i><span><%= dt.name %></span></a>
+            <a href="/pic/<%=dt._id%>"><i><img src="<%=dt.url%>"></i><span><%= dt.name %></span></a>
         </li>
         <% }) %>
     </ul>

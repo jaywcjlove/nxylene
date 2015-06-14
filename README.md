@@ -29,7 +29,7 @@ node app.js
 
 ### 依赖说明
 
-- ejs:模板引擎选择ejs，我只想要一个简单的帮我填充数据的模板。[github](https://github.com/tj/ejs) [文档](http://www.embeddedjs.com/) 
+- ejs:模板引擎选择ejs，我只想要一个简单的帮我填充数据的模板。[github](https://github.com/tj/ejs) [文档](http://www.embeddedjs.com/) [ejs.co](http://ejs.co/)
 - express:一个服务器端的基于 Node.js 的 JavaScript 开发框架。 [官方文档](http://expressjs.com/) [中文文档](http://expressjs.jser.us/)  
 - mongoose:让NodeJS更容易操作Mongodb数据库 [官网](http://mongoosejs.com/)
 
