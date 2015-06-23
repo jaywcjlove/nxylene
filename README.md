@@ -24,9 +24,11 @@ $ node app.js
 - routes/ 文件夹负责路由订制
 - controllers/ 文件夹负责业务逻辑处理
 - models/ 文件夹负责存放数据结构模型
-- public/ 前端静态资源文件存放目录
 - lib/ 存放工具模块
-- views/ 存在静态模版文件
+- themes
+    + default/默认皮肤
+        * source/ 前端静态资源文件存放目录
+        * views/ 存在静态模版文件
 
 
 ## 相关依赖
@@ -47,6 +49,8 @@ $ node app.js
 
 ```
 npm install PACKAGE_NAME --save 
+
+$ npm install #安装 package.json 中的依赖
 ```
 
 ## 包管理工具
@@ -65,7 +69,7 @@ CNPM：http://cnpmjs.org/ 、 http://npm.taobao.org/ (淘宝)
 
 ## 热门包
 
-- Grunt：http://gruntjs.com/ （英文）、 http://gruntjs.cn/（中文）
+- Grunt：http://gruntjs.com/ （英文）、 http://gruntjs.cn/ （中文）
 - stylus：http://learnboost.github.io/stylus/
 - Yeoman：http://yeoman.io/
 - Socket.io：http://socket.io/
