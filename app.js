@@ -5,9 +5,10 @@ var port = process.env.PORT || 3001
 // 调用 express 实例，它是一个函数，不带参数调用时，会返回一个 express 实例，将这个变量赋予 app 变量。
 var app = express()
 
+var themes = 'default'
 
 // app.set("view","./view/pages")
-app.set('views', __dirname + '/views/pages');
+app.set('views', __dirname + '/themes/' + themes + '/views/pages');
 app.set('view engine','ejs')
 //如果不愿意使用默认的layout.ejs，则可以设置layout为false
 app.set('view options',{
@@ -15,7 +16,7 @@ app.set('view options',{
 })
 
 //静态资源使用目录
-app.use('/public', express.static(__dirname+'/public'));
+app.use(express.static(__dirname + '/themes/' + themes + '/source'));
 
 // 定义好我们 app 的行为之后，让它监听本地的 3000 端口。
 // 这里的第二个函数是个回调函数，会在 listen 动作成功后执行，我们这里执行了一个命令行输出操作，告诉我们监听动作已完成。
