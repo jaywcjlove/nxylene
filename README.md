@@ -4,8 +4,7 @@
 
 ## 安装依赖 & 启动
 
-```
-
+```shell
 # 进入nodeexample目录安装依赖
 $ npm install
 
@@ -14,7 +13,7 @@ $ npm install # 安装依赖
 $ grunt   #静态资源管理
 
 # 启动项目
-$ node app.js
+$ npm start
 
 ```
 
@@ -23,6 +22,7 @@ $ node app.js
 
 - routes/ 文件夹负责路由订制
 - controllers/ 文件夹负责业务逻辑处理
+- schemas/ 文件夹负责存放数据模式
 - models/ 文件夹负责存放数据结构模型
 - lib/ 存放工具模块
 - themes
@@ -47,7 +47,7 @@ $ node app.js
 
 ### 安装依赖
 
-```
+```bash
 npm install PACKAGE_NAME --save 
 
 $ npm install #安装 package.json 中的依赖
