@@ -37,7 +37,9 @@ $ npm start
 
 - ejs:模板引擎选择ejs，我只想要一个简单的帮我填充数据的模板。[github](https://github.com/tj/ejs) [文档](http://www.embeddedjs.com/) [ejs.co](http://ejs.co/)
 - express:一个服务器端的基于 Node.js 的 JavaScript 开发框架。 [官方文档](http://expressjs.com/) [中文文档](http://expressjs.jser.us/)  
-- mongoose:让NodeJS更容易操作Mongodb数据库 [官网](http://mongoosejs.com/)
+- mongoose:让NodeJS更容易操作Mongodb数据库 [官网](http://mongoosejs.com/) [安装教程](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/) 
+    + [brew官网](http://brew.sh/index_zh-cn.html) 用来安装mongodb
+    + [robomongo](http://www.robomongo.org/) 跨平台客户端
 
 - Node.js [官方文档](http://nodejs.org/api/)
 - Node.js [中文文档](http://nodejs.jsbin.cn/api/)
