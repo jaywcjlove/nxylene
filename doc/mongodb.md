@@ -14,6 +14,18 @@
  -  `brew install mongodb --with-openssl` MongoDB的构建从源代码使用TLS / SSL支持  
  -  `brew install mongodb --devel`安装的MongoDB的最新的开发版本
 
+
+## 运行MongoDB
+
+```
+# 创建文数据文件夹
+$ mkdir -p /data/db
+
+$ sudo mongod
+
+$ mongo   # Run MongoDB
+```
+
 注意：  
 
 更新brew 如果没有反应，可以用VPS或者卸载重装。如果彻底打不开那就科学上网
