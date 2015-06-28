@@ -1,16 +1,29 @@
 # nodejs例子
 
-练习nodejs 和搜集的一些资料
+练习nodejs大法和搜集的一些资料，使用nodejs+mongodb+express4.x做个小实例。
 
 ## 安装依赖 & 启动
+
+1. 使用前确保你已经安装了nodejs或者iojs了
+2. 使用前还确保你已经安装了mongodb了
+2. 使用npm install -g bower安装bower前端文件管理器
+3. 运行bower install安装项目前端框架(未来会使用)
+4. npm install安装node包依赖
+5. 使用命令node app.js或者直接grunt就可以运行了,在本地测试端口号为3000
 
 ```shell
 # 进入nodeexample目录安装依赖
 $ npm install
 
-# 如果修改样式进入 nodeexample/public 目录运行
+# 如果修改样式进入 themes/default/source 目录运行
 $ npm install # 安装依赖
 $ grunt   #静态资源管理
+
+# 启动mongodb数据库
+$ mongod --config /usr/local/etc/mongod.conf
+
+# mongod 是 MongoDB 系统的主要后台进程。它处理数据请求，管理数据访问，执行后台管理操作。
+$ sudo mongod
 
 # 启动项目
 $ npm start
