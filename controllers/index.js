@@ -1,10 +1,12 @@
-module.exports = function (app) {
-    // app 本身有很多方法，其中包括最常用的 get、post、put/patch、delete，
-    // 在这里我们调用其中的 get 方法，为我们的 `/` 路径指定一个 handler 函数。
-    // 这个 handler 函数会接收 req 和 res 两个对象，他们分别是请求的 request 和 response。
-    // request 中包含了浏览器传来的各种信息，比如 query 啊，body 啊，headers 啊之类的，都可以通过 req 对象访问到。
-    // res 对象，我们一般不从里面取信息，而是通过它来定制我们向浏览器输出的信息，比如 header 信息，比如想要向浏览器输出的内容
-    app.get('/', function (req, res) {
+exports.index = function(req, res){
+        // Pic.fetch(function(err,pic_list){
+        //     console.log("message:JSLite:002:");
+        //     if(err) console.log(err);
+        //     res.render('index', { 
+        //         title: 'JSLite 官网',
+        //         pic_list: pic_list
+        //     });
+        // })
         res.render('index', { 
             title: 'JSLite 官网',
             pic_list: [{
@@ -41,15 +43,13 @@ module.exports = function (app) {
                 url: "http://i.bufan.com/upload/2014-06-24/14035889302261.jpg"
             }]
         });
-    });
-    app.get('/pic/:id', function (req, res) {
-        res.render('detail', { 
-            title: '详情页面' ,
-            pic_list:{
-                name: "长腿美女精美壁",
-                _id: 5,
-                url: "http://i.bufan.com/upload/2014-06-24/14035889302261.jpg"
-            }
-        });
+    
+}
+
+
+// 404 页面
+exports.undefineds = function(req,res){
+    res.render('404', { 
+        title: 'No Found' 
     });
 }
