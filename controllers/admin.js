@@ -1,6 +1,6 @@
 exports.index =function(req, res){
-    res.render('admin', { 
-        title: '后台首页' ,
+    res.render('admin/index', { 
+        title: '管理后台' ,
         pic_list:{
             name: "长腿美女精美壁",
             _id: 5,

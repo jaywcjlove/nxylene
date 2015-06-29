@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%=title%></title>
+    <link rel="stylesheet" type="text/css" href="/build/system.min.css">
+</head>
+<body>
+<header class="header">
+    <div class="l">
+        <h1><%=title%></h1>
+    </div>
+    <div class="r">
+        <ul>
+            <li><a target="_blank" href="http://JSLite.io">JSLite.io</a></li>
+            <li><a target="_blank" href="https://github.com/jaywcjlove">Github</a></li>
+            <li><a href="#">您好！admin</a><a href="#">退出</span></a></li>
+        </ul>
+    </div>
+</header>
+
+
+<div class="content" id="content">
+    <div class="l menu">
+        <nav>
+            <ul id="nav">
+                <li><a href="/admin/contact">联系我们</a></li>
+                <li><a href="/admin/about">关于我们</a></li>
+                <li><a href="/admin/product">产品介绍</a></li>
+                <li><a href="/admin/news">新闻动态</a></li>
+                <li><a href="/admin/jobs">工作机会</a></li>
+                <li>
+                    <a href="#">其它相关设置<span class="arrow"></span></a>
+                    <ul>
+                        <li><a href="/admin/news">友情链接</a></li>
+                        <li><a href="/admin/footer">页脚设置</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="iframe">
+        <div class="loading" id="loading">正在加载中</div>
+        <iframe id="openurl" src="test.html"></iframe>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+(function (window) {
+    function $I(str){
+        return document.getElementById(str);
+    }
+    function showNav(arr){
+        if (arr.children.length>1) {
+            var span =arr.children[0].getElementsByTagName("span");
+            if(arr.children[1].style.display==""||arr.children[1].style.display=="none"){
+                arr.children[1].style.display="block";
+                if (span.length>0) {
+                    span[0].className = "arrow unarrow";
+                };
+            }else{
+                arr.children[1].style.display="none";
+                if (span.length>0) {
+                    span[0].className = "arrow";
+                };
+            }
+        };
+
+    }
+    function nav(){
+        var nav = $I("nav");
+        if (nav) {
+            var li = nav.children;
+            if (li.length>0) {
+                for (var i = 0; i < li.length; i++) {
+                    (function(e){
+                        li[e].children[0].onclick=function(){
+                            showNav(li[e])
+                        }
+                    })(i)
+                };
+            };
+
+            var lim = nav.getElementsByTagName("LI");
+            if (lim.length>0) {
+                for (var i = 0; i < lim.length; i++) {
+                    if (lim[i].children.length<2){
+                        (function(e){
+                            lim[e].onclick=function(){
+                                for (var f = 0; f < lim.length; f++) {
+                                    lim[f].className="";
+                                };
+                                lim[e].className="ok";
+                            }
+                        })(i);
+                        var hre=lim[i].children[0].getAttribute("href");
+
+                        if(hre.indexOf("javascript:atcc.loadFrame")>0){
+
+                        }else if (lim[i].children[0].getAttribute("href").length<2) {
+                            lim[i].children[0].setAttribute('href',"#"); 
+                        }else{
+                            lim[i].children[0].setAttribute('href',"javascript:atcc.loadFrame('"+hre+"')"); 
+                        }
+                    }
+                };
+                iframeLoad();
+            };
+
+        };
+    }
+    function load(){
+        var con = $I("content");
+        if (con) {
+            con.style.height = (document.documentElement.clientHeight - 41) + "px";
+        };
+        nav();
+    }
+    function loadFrame(url){
+        var ifm = $I("openurl");
+        if (ifm) {
+            $I("loading").style.display="block";
+            ifm.src = url
+
+        };
+    }
+    function iframeLoad(){
+        var ifm = $I("openurl");
+
+        if (!ifm) return;
+        if (ifm.attachEvent){ 
+            ifm.attachEvent("onload", function(){ 
+                $I("loading").style.display="none";
+            }); 
+        } else { 
+            ifm.onload = function(){ 
+                $I("loading").style.display="none";
+            }; 
+        }
+    }
+    window.atcc={
+        load:load,
+        loadFrame:loadFrame
+    }
+})(window)
+
+
+window.onresize=function(){
+    atcc.load();
+}
+atcc.load();
+</script>
+</body>
+</html>

@@ -32,7 +32,7 @@ app.use(bodyParser()); // pull information from html in POST
 app.use(methodOverride());  // simulate DELETE and PUT
 
 //添加路由
-require('./routes/routes')(app);
+require('./conf/routes')(app);
 
 //运行： NODE_ENV=dev node app.js
 if ('dev' === app.get('env')) {

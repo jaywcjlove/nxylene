@@ -12,6 +12,7 @@ module.exports = (grunt) ->
                     # //<%= grunt.template.today() %>时间
                 files:
                     'build/index.min.css': 'styl/index.styl'
+                    'build/system.min.css': 'styl/system.styl'
         watch: 
             another: 
                 files: ['styl/*.styl']
