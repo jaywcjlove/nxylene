@@ -1,6 +1,6 @@
 # nodejs例子
 
-练习nodejs大法和搜集的一些资料，使用nodejs+mongodb+express4.x做个小实例。
+练习nodejs大法，使用nodejs+mongodb+express4.x做个小实例。
 
 ## 安装依赖 & 启动
 
