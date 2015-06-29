@@ -19,13 +19,13 @@ $ npm install
 $ npm install # 安装依赖
 $ grunt   #静态资源管理
 
-# 启动mongodb数据库
+# 1.启动mongodb数据库
 $ mongod --config /usr/local/etc/mongod.conf
 
-# mongod 是 MongoDB 系统的主要后台进程。它处理数据请求，管理数据访问，执行后台管理操作。
+# 2.mongod 是 MongoDB 系统的主要后台进程。它处理数据请求，管理数据访问，执行后台管理操作。
 $ sudo mongod
 
-# 启动项目
+# 3.启动项目
 $ npm start
 
 ```
