@@ -33,11 +33,13 @@ $ npm start
 
 ## 文件夹结构说明
 
-- routes/ 文件夹负责路由订制
-- controllers/ 文件夹负责业务逻辑处理
-- schemas/ 文件夹负责存放数据模式
-- models/ 文件夹负责存放数据结构模型
+- app/ 
+    + controllers/ 文件夹负责业务逻辑处理
+    + schemas/ 文件夹负责存放数据模式
+    + models/ 文件夹负责存放数据结构模型
+- conf/ 文件夹负责路由订制，等配置文件
 - lib/ 存放工具模块
+- doc/ 学习文档
 - themes
     + default/默认皮肤
         * source/ 前端静态资源文件存放目录
