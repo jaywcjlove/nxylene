@@ -1,7 +1,7 @@
-var Index = require('../controllers/index')
-var Detail = require('../controllers/detail')
-var Admin = require('../controllers/admin')
-var Contact = require('../controllers/contact')
+var Index = require('../app/controllers/index')
+var Detail = require('../app/controllers/detail')
+var Admin = require('../app/controllers/admin')
+var Contact = require('../app/controllers/contact')
 
 module.exports = function (app) {
 
