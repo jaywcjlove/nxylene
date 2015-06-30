@@ -1,13 +1,28 @@
-<% include ../../includes/header %>
+<% include header %>
 
-关于我们 -  编辑
+<h1 class="articleTitle"><%=title%></h1>
 
-<hr/>
-<form action="contact" method="post">
-    <p><input type="hidden" name="type" value="contact" /></p>
-    <p>标题：<input type="text" name="title" value="<%=data.title%>" /></p>
-    <p>内容: <textarea name="contents"><%=data.contents %></textarea> </p>
-    <input type="submit" value="Submit" />
-</form>
 
-<% include ../../includes/footer %>
+<div class="JSLite_tabs wp">
+    <ul class="JSLite_tabHead">
+        <li class="on"><a href="#">编辑</a></li>
+        <li><a href="#">预览</a></li>
+    </ul>
+    <ul class="JSLite_tabCon">
+        <li class="on">
+            <form action="contact" method="post">
+                <p><input type="hidden" name="type" value="contact" /></p>
+                <p>标题：<input type="text" name="title" value="<%=data.title%>" /></p>
+                <p>内容: <textarea name="contents" id="contents"><%=data.contents %></textarea> </p>
+                <input type="submit" value="Submit" />
+            </form>
+        </li>
+        <li>
+            内容二啦
+
+        </li>
+    </ul>
+</div>
+
+
+<% include footer %>
