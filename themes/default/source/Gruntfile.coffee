@@ -26,7 +26,10 @@ module.exports = (grunt) ->
                 files:
                     'build/index.min.css': 'styl/index.styl'
                     'build/system.min.css': 'styl/system.styl'
-                    'build/system_page.min.css': 'styl/system_page.styl'
+                    'build/system_page.min.css': [
+                        # 'styl/form.styl'
+                        'styl/system_page.styl'
+                    ]
         watch: 
             another: 
                 files: ['styl/*.styl','js/*.js']
