@@ -1,0 +1,3 @@
+[submodule "themes/default/source/MDEditor"]
+	path = themes/default/source/MDEditor
+	url = https://github.com/jaywcjlove/MDEditor.git
