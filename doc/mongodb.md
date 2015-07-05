@@ -50,20 +50,86 @@ $ mongo   #进行数据库的一些操作
 
 ## 常用命令 
 
+`use admin` #进入数据库admin  
+`db.addUser('name','pwd')` #增加或修改用户密码  
+`db.system.users.find()` #查看用户列表  
+`db.auth('name','pwd')` #用户认证  
+`db.removeUser('name')` #删除用户  
+`show users` #查看所有用户  
+`show dbs` #查看所有数据库  
+`show collections` #查看所有的collection  
+`db.printCollectionStats()` #查看各collection的状态  
+`db.printReplicationInfo()` #查看主从复制状态  
+`db.repairDatabase()` #修复数据库  
+`db.setProfilingLevel(1)` #设置记录profiling，0=off 1=slow 2=all  
+`show profile` #查看profiling  
+`db.copyDatabase('mail_addr','mail_addr_tmp')` #拷贝数据库  
 `db.help()` 当前数据库支持哪些方法  
-`show dbs`  查看所有数据库列表  
-`db.nxylene.find({type:"contact"})` 列出`nxylene`对象type === "contact"  
-`db.auth(username, password)` 访问认证   
-`db.cloneDatabase(fromhost)` 克隆数据库  
-`db.copyDatabase(fromdb, todb, fromhost)`  复制数据库  
+`db.nxylene.find({type:"contact"})` 列出`nxylene`对象type === "contact"   
+`db.cloneDatabase(fromhost)` 克隆数据库   
 `db.createCollection(name, {size: ..., capped: ..., max : ... })` 创建表  
 `db.getCollectionNames()`  获取当前数据库的表名  
-`db.removeUser(username)` 删除数据库用户  
-`db.repairDatabase()` 修复数据库  
+`db.mail_addr.drop()` #删除collection  
 `db.dropDatabase()` 删除当前数据库   
 
-## 删除表数据集
+## 增删改
 
+`db.test.find({id:10})` 返回test数据集ID=10的数据集  
+`db.test.find({id:10}).count()` 返回test数据集ID=10的数据总数  
+`db.test.find({id:10}).limit(2)` 返回test数据集ID=10的数据集从第二条开始的数据集  
+`db.test.find({id:10}).skip(8)` 返回test数据集ID=10的数据集从0到第八条的数据集  
+`db.test.find({id:10}).limit(2).skip(8)` 返回test数据集ID=1=的数据集从第二条到第八条的数据  
+`db.test.find({id:10}).sort()` 返回test数据集ID=10的排序数据集  
+`db.test.findOne([query])` 返回符合条件的一条数据  
+`db.test.getDB()` 返回此数据集所属的数据库名称  
+`db.test.getIndexes()` 返回些数据集的索引信息  
+`db.test.group({key:...,initial:...,reduce:...[,cond:...]})`  
+`db.test.mapReduce(mayFunction,reduceFunction,<optional params>)`  
+`db.test.remove(query)` 在数据集中删除一条数据  
+`db.test.renameCollection(newName)` 重命名些数据集名称  
+`db.test.save(obj)` 往数据集中插入一条数据  
+`db.test.stats()` 返回此数据集的状态  
+`db.test.storageSize()` 返回此数据集的存储大小  
+`db.test.totalIndexSize()` 返回此数据集的索引文件大小  
+`db.test.totalSize()` 返回些数据集的总大小  
+`db.test.update(query,object[,upsert_bool])` 在此数据集中更新一条数据  
+`db.test.validate()` 验证此数据集  
+`db.test.getShardVersion()` 返回数据集共享版本号  
+
+## MongoDB语法与现有关系型数据库SQL语法比较
+
+```
+#MongoDB语法 MySql语法
+db.test.find({'name':'foobar'}) <==> select * from test where name='foobar'
+db.test.find() <==> select * from test
+db.test.find({'ID':10}).count() <==> select count(*) from test where ID=10
+db.test.find().skip(10).limit(20) <==> select * from test limit 10,20
+db.test.find({'ID':{$in:[25,35,45]}}) <==> select * from test where ID in (25,35,45)
+db.test.find().sort({'ID':-1}) <==> select * from test order by ID desc
+db.test.distinct('name',{'ID':{$lt:20}}) <==> select distinct(name) from test where ID<20
+db.test.group({key:{'name':true},cond:{'name':'foo'},reduce:function(obj,prev){prev.msum+=obj.marks;},initial:{msum:0}}) <==> select name,sum(marks) from test group by name
+db.test.find('this.ID<20',{name:1}) <==> select name from test where ID<20
+db.test.insert({'name':'foobar','age':25})<==>insert into test ('name','age') values('foobar',25)
+db.test.remove({}) <==> delete * from test
+db.test.remove({'age':20}) <==> delete test where age=20
+db.test.remove({'age':{$lt:20}}) <==> elete test where age<20
+db.test.remove({'age':{$lte:20}}) <==> delete test where age<=20
+db.test.remove({'age':{$gt:20}}) <==> delete test where age>20
+db.test.remove({'age':{$gte:20}}) <==> delete test where age>=20
+db.test.remove({'age':{$ne:20}}) <==> delete test where age!=20
+db.test.update({'name':'foobar'},{$set:{'age':36}}) <==> update test set age=36 where name='foobar'
+db.test.update({'name':'foobar'},{$inc:{'age':3}}) <==> update test set age=age+3 where name='foobar'
+```
+
+## 索引
+
+`db.foo.ensureIndex({firstname: 1, lastname: 1}, {unique: true});` #增加索引：1(ascending),-1(descending)  
+`db.user_addr.ensureIndex({'Al.Em': 1})` #索引子对象  
+`db.foo.getIndexes()` #查看索引信息  
+`db.foo.getIndexKeys()` #查看索引信息  
+`db.user_addr.dropIndex('Al.Em_1')` #根据索引名删除索引  
+
+## 删除表数据集
 
 ### 删除一条数据
 
