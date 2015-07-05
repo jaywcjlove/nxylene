@@ -13,7 +13,7 @@ module.exports = (grunt) ->
                 files:
                     'build/contact.min.js': [
                         'node_modules/jslite/build/JSLite.min.js',
-                        'node_modules/marked/marked.min.js',
+                        'MDEditor/build/MDEditor.min.js',
                         'js/contact.js'
                     ]
         stylus:
@@ -27,8 +27,8 @@ module.exports = (grunt) ->
                     'build/index.min.css': 'styl/index.styl'
                     'build/system.min.css': 'styl/system.styl'
                     'build/system_page.min.css': [
-                        # 'styl/form.styl'
                         'styl/system_page.styl'
+                        'MDEditor/themes/default/stylus/MDEditor.styl'
                     ]
         watch: 
             another: 

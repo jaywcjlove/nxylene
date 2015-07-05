@@ -1,31 +1,18 @@
 ;(function($){
-
     $(function(){
-        var $con = $('#contents'),
+        var $con = $('input[name=contents]'),
             $preview = $('#section_preview'),
             con_str = $con.val()
 
-        $preview.html(marked(con_str))
-
-        console.log("message:1:",$('#contents').val());
-        console.log("message:2:",$('#contents').length);
-        console.log("message:2:",marked(con_str));
-    })
-
-    
-    $(function(){
-        $('.JSLite_tabs').children().each(function(idx,item){
-            var cla = $(item).attr('class');
-            cla&&cla.indexOf('JSLite_tabHead')>-1?$(item).children().each(function(n,obj){
-                $(obj).bind('click',function (d){
-                    $(item).children().removeClass("on");
-                    $(this).addClass("on");
-                    $(item).next().children().map(function(nn,nobj){
-                        nn==n?$(nobj).show():$(nobj).hide();
-                    })
-                })
-            }):null;
-        })
+        //使用MDEditor编辑器
+        var mde = new MDEditor({
+            id:"#mdeditor",
+            minheight:300,
+            maxheight:600
+        }).load().input(function(evn,opts){
+            $con.val(opts.value)
+        });
+        $con.val(mde.getMD())
     })
 
 })(JSLite)
