@@ -1,5 +1,5 @@
 {
-  "name": "source",
+  "name": "nxylene",
   "version": "1.0.1",
   "authors": [
     "jaywcjlove <398188662@qq.com>"
@@ -12,7 +12,8 @@
     "test",
     "tests"
   ],
-  "devDependencies": {
-    "bootstrap": "~3.3.5"
+  "dependencies": {
+    "bootstrap": "~3.3.4",
+    "jslite": "~1.1.4"
   }
 }

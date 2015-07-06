@@ -1,11 +1,18 @@
 {
   "name": "nodetest",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "description": "学习nodejs",
   "scripts": {
     "start": "node ./app.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-concurrent": "^2.0.0",
+    "grunt-contrib-stylus": "^0.21.0",
+    "grunt-contrib-uglify": "^0.9.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-nodemon": "^0.4.0"
+  },
   "dependencies": {
     "body-parser": "^1.13.1",
     "ejs": "^2.3.1",

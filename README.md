@@ -4,20 +4,19 @@
 
 ## 安装依赖 & 启动
 
+使用 grunt 管理项目，自动运行启动node.js 服务，监听js文件自动重启服务。监听静态文件css，js自动压缩合并静态文件。
+
 1. 使用前确保你已经安装了nodejs或者iojs了
 2. 使用前还确保你已经安装了mongodb了
-2. 使用npm install -g bower安装bower前端文件管理器
-3. 运行bower install安装项目前端框架(未来会使用)
+3. 启动mongodb
 4. npm install安装node包依赖
-5. 使用命令node app.js或者直接grunt就可以运行了,在本地测试端口号为3000
+5. 运行bower install安装项目前端框架(未来会使用)，`npm install -g bower`安装bower
+6. npm install安装node包依赖
+7. 直接grunt就可以运行了，会自动启动node.js服务
 
 ```shell
-# 进入nodeexample目录安装依赖
-$ npm install
-
-# 如果修改样式进入 themes/default/source 目录运行
-$ npm install # 安装依赖
-$ grunt   #静态资源管理
+#由于Gruntfile.js使用的是coffeescript所以全局安装
+$ sudo npm install -g coffee-script
 
 # 1.启动mongodb数据库
 $ mongod --config /usr/local/etc/mongod.conf
@@ -25,8 +24,10 @@ $ mongod --config /usr/local/etc/mongod.conf
 # 2.mongod 是 MongoDB 系统的主要后台进程。它处理数据请求，管理数据访问，执行后台管理操作。
 $ sudo mongod
 
-# 3.启动项目
-$ npm start
+# 进入在根目录安装依赖
+$ bower install
+$ npm install
+$ grunt   #启动node.js服务和管理静态资源
 
 ```
 
