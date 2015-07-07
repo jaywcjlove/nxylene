@@ -1,9 +1,9 @@
 //引入 `express` 模块，并将它赋予 `express` 这个变量等待使用。
 var express = require('express')
 var path = require('path')
-var morgan = require('morgan')
-var bodyParser = require('body-parser')
-var methodOverride = require('method-override')
+var morgan = require('morgan')//用户请求日志中间件
+var bodyParser = require('body-parser')//请求内容解析中间件
+var methodOverride = require('method-override') //HTTP伪造中间件
 var mongoose = require('mongoose');
 var port = process.env.PORT || 6001
 // 调用 express 实例，它是一个函数，不带参数调用时，会返回一个 express 实例，将这个变量赋予 app 变量。
@@ -28,8 +28,9 @@ app.use(express.static(__dirname + '/themes/' + themes + '/source'));
 // app.use(express.static(path.join(__dirname,'source')));
 
 app.use(morgan('dev')); //将每个请求记录到控制台
-app.use(bodyParser()); // pull information from html in POST
-app.use(methodOverride());  // simulate DELETE and PUT
+app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded  
+app.use(bodyParser.json()); // parse application/json  
+app.use(methodOverride());  // simulate DELETE and PUT 
 
 //添加路由
 require('./conf/routes')(app);
