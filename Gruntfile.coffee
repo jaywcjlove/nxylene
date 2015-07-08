@@ -25,6 +25,11 @@ module.exports = (grunt) ->
             indexs:
                 files:
                     'themes/default/source/build/index.min.css':'themes/default/source/styl/index.styl'
+            login:
+                files:
+                    'themes/default/source/build/login.min.css':[
+                        'themes/default/source/styl/login.styl'
+                    ]
             system_page:
                 files:
                     'themes/default/source/build/system_page.min.css': [
@@ -51,8 +56,8 @@ module.exports = (grunt) ->
                     cwd: __dirname
                     ignore: ['node_modules/**','bower_components/**','doc/**']
                     debug:true
-                    ext: 'js,coffee'
-                    watch: ['./']
+                    ext: 'js,coffee,ejs'
+                    watch: ['./','themes/default/views/*']
                     delay: 500
                     legacyWatch: true
         concurrent: 

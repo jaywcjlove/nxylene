@@ -3,8 +3,8 @@ var bcrypt = require('bcrypt') //密码加密
 var SALT_WORK_FACTOR = 10 //计算强度
 var UserSchema = new mongoose.Schema({
     name:{
-        unique: true,
-        type: String
+        type: String,
+        unique: true
     },
     password: String, 
     meta:{

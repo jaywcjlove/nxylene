@@ -2,6 +2,7 @@ var Index = require('../app/controllers/index')
 var Detail = require('../app/controllers/detail')
 var Admin = require('../app/controllers/admin')
 var Contact = require('../app/controllers/contact')
+var User = require('../app/controllers/user')
 
 module.exports = function (app) {
 
@@ -20,7 +21,11 @@ module.exports = function (app) {
     //联系我们
     app.get('/contact', Contact.index);
 
-    // //后台页面
+    //后台页面
+    app.get('/init', User.init);//初始化数据
+    app.post('/user_init', User.user_init);//提交-初始化数据
+    app.get('/login', User.login);//页面登陆
+    app.post('/login', User.login);//页面注册
     app.get('/admin', Admin.index);
     app.get('/admin/contact', Contact.contact);
     app.post('/admin/contact', Contact.contact_post);
