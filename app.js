@@ -37,7 +37,7 @@ require('./conf/routes')(app);
 
 //运行： NODE_ENV=dev node app.js
 if ('dev' === app.get('env')) {
-    console.log("开发环境：");
+    app.use(morgan('dev'))//中间件日志
     mongoose.set('debug', true);
 }
 
