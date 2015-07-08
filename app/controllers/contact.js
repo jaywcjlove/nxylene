@@ -18,7 +18,7 @@ exports.index = function(req,res){
             data = contact[0]
         }
         res.render('admin/contact_edit', { 
-            title: '关于我们' ,
+            title: '联系我们' ,
             data:data
         });
     });
@@ -41,7 +41,7 @@ exports.contact =function(req, res){
             data = contact[0]
         }
         res.render('admin/contact_edit', { 
-            title: '关于我们编辑' ,
+            title: '联系我们编辑' ,
             data:data
         });
     });
