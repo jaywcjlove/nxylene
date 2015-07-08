@@ -28,6 +28,7 @@ $ sudo mongod
 $ bower install
 $ npm install
 $ grunt   #启动node.js服务和管理静态资源
+$ NODE_ENV=dev grunt   #启动node.js服务【带日志中间件和mongoose日志】和管理静态资源  
 
 ```
 
