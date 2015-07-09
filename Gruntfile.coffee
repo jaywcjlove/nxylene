@@ -57,7 +57,7 @@ module.exports = (grunt) ->
                     ignore: ['node_modules/**','bower_components/**','doc/**']
                     debug:true
                     ext: 'js,coffee,ejs'
-                    watch: ['./','themes/default/views/*']
+                    watch: ['*','themes/default/views/*']
                     delay: 500
                     legacyWatch: true
         concurrent: 
