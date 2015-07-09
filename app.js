@@ -5,7 +5,7 @@ var morgan = require('morgan')//用户请求日志中间件
 var bodyParser = require('body-parser')//请求内容解析中间件
 var methodOverride = require('method-override') //HTTP伪造中间件
 var cookieParser = require('cookie-parser')//解析Cookie头和填充req.cookies 中间件
-var expressSession = require('express-session')//简单的基于cookie的会话中间件。
+var expressSession = require('express-session')//简单的基于会话中间件。
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(expressSession)//将connect的session持久化到mongodb中的
 var port = process.env.PORT || 6001
@@ -40,7 +40,10 @@ app.use(expressSession({
     store: new mongoStore({
         url:dbUrl,
         collection:'sessions'
-    })
+    }),
+    cookie: {maxAge: 600000 },//设置maxAge是600000ms，即10分钟后session和相应的cookie失效过期
+    resave: true, 
+    saveUninitialized: true
 }))
 
 //添加路由
