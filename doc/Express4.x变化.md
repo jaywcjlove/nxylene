@@ -64,3 +64,19 @@ app.use(expressSession({
     })
 }))
 ```
+
+运行之后会出下面警告
+
+```js
+//=> express-session deprecated undefined resave option; provide resave option app.js:38:9
+//=> express-session deprecated undefined saveUninitialized option; provide saveUninitialized option app.js:38:9
+
+//设置两个选项就搞定了
+app.use(expressSession({
+    secret: 'nxylene',
+    store: new mongoStore({
+        url:dbUrl,
+        collection:'sessions'
+    })
+}))
+```
