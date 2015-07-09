@@ -25,7 +25,7 @@ module.exports = function (app) {
     app.get('/init', User.init);//初始化数据
     app.post('/user_init', User.user_init);//提交-初始化数据
     app.get('/login', User.login);//页面登陆
-    app.post('/login', User.login);//页面注册
+    app.post('/admin/login', User.signin);//登录校验
     app.get('/admin', Admin.index);
     app.get('/admin/contact', Contact.contact);
     app.post('/admin/contact', Contact.contact_post);

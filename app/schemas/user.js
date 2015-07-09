@@ -26,18 +26,27 @@ UserSchema.pre('save', function(next) {
     } else {
         this.meta.updateAt = Date.now();
     }
-    //加盐 - 混淆密码进行加密？
-    bcrypt.genSalt(SALT_WORK_FACTOR,function(err,salt){
-        if(err) return next(err)
-        bcrypt.hash(user.password,salt,function(err,hash){
-            if(err) return next(err)
-            user.password = hash
-            next()
-        })
-    })
-    next();
+    // generate a salt 加盐 - 混淆密码进行加密
+    bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+        if (err) return next(err);
+        // 使用新的加盐哈希密码
+        bcrypt.hash(user.password, salt, function (err, hash) {
+            if (err) return next(err);
+            // 设置密码为新的哈希密码存到mongodb中。
+            user.password = hash;
+            next();
+        });
+    });
 });
 
+UserSchema.methods = {
+    comparePassword:function(_password,cb){
+        bcrypt.compare(_password,this.password,function(err,isMacth){
+            if(err) return cb(err);
+            cb(null,isMacth)
+        })
+    }
+}
 
 UserSchema.statics = {
     fetch:function(cb){

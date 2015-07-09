@@ -50,3 +50,23 @@ exports.user_init = function(req, res){//创建一个用户
         }
     })
 }
+
+//登陆验证校验
+exports.signin = function(req, res){
+    var _user = req.body
+    var name =_user.name
+    var password = _user.password
+
+    User.findOne({name:name},function(err,user){
+        if(err) console.log(err);
+        if(!user) return res.redirect('/login');
+        user.comparePassword(password,function(err,isMatch){
+            if(err) console.log(err);
+            if(isMatch){
+                console.log("Password is Match！密码比对成功！");
+                return res.redirect('/admin');  
+            } else console.log("Password is not Match！密码比对失败");
+        })
+    })
+
+}
