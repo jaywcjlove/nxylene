@@ -63,6 +63,7 @@ exports.signin = function(req, res){
         user.comparePassword(password,function(err,isMatch){
             if(err) console.log(err);
             if(isMatch){
+                req.session.user = user
                 console.log("Password is Match！密码比对成功！");
                 return res.redirect('/admin');  
             } else console.log("Password is not Match！密码比对失败");

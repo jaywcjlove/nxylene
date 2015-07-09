@@ -4,7 +4,10 @@ var path = require('path')
 var morgan = require('morgan')//用户请求日志中间件
 var bodyParser = require('body-parser')//请求内容解析中间件
 var methodOverride = require('method-override') //HTTP伪造中间件
+var cookieParser = require('cookie-parser')//解析Cookie头和填充req.cookies 中间件
+var expressSession = require('express-session')//简单的基于cookie的会话中间件。
 var mongoose = require('mongoose');
+var mongoStore = require('connect-mongo')(expressSession)//将connect的session持久化到mongodb中的
 var port = process.env.PORT || 6001
 // 调用 express 实例，它是一个函数，不带参数调用时，会返回一个 express 实例，将这个变量赋予 app 变量。
 var app = express()
@@ -30,7 +33,15 @@ app.use(express.static(__dirname + '/themes/' + themes + '/source'));
 app.use(morgan('dev')); //将每个请求记录到控制台
 app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-form-urlencoded  
 app.use(bodyParser.json()); // parse application/json  
-app.use(methodOverride());  // simulate DELETE and PUT 
+app.use(methodOverride());  // simulate DELETE and PUT
+app.use(cookieParser())
+app.use(expressSession({
+    secret: 'nxylene',
+    store: new mongoStore({
+        url:dbUrl,
+        collection:'sessions'
+    })
+}))
 
 //添加路由
 require('./conf/routes')(app);

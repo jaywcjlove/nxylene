@@ -1,4 +1,5 @@
 exports.index =function(req, res){
+    console.log("session:",req.session.user)
     res.render('admin/index', { 
         title: '管理后台' ,
         pic_list:{
