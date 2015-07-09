@@ -34,3 +34,33 @@ Express 4 不再依赖 Connect，并且从核心中移除了所有内建的中�
 完整的列表见这里:  https://github.com/senchalabs/connect#middleware
 
 
+
+
+# 报错
+
+## 使用session中间件报错
+
+代码中使用session中间件的代码：
+```js
+app.use(express.session({
+    //...
+}));
+
+//=>报错信息： Most middleware (like session) is no longer bundled with Express and must be installed separately. Please see https://github.com/senchalabs/connect#middleware.
+```
+
+大多数中间件（像session）不再随express一起安装。所以我们需要安装 `express-session` 中间件
+
+```js
+var expressSession = require('express-session')//简单的基于会话中间件。
+var mongoStore = require('connect-mongo')(expressSession) //将connect的session持久化到mongodb中的
+
+//....
+app.use(expressSession({
+    secret: 'nxylene',
+    store: new mongoStore({
+        url:dbUrl,
+        collection:'sessions'
+    })
+}))
+```
