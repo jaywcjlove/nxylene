@@ -21,14 +21,17 @@ module.exports = function (app) {
     //联系我们
     app.get('/contact', Contact.index);
 
-    //后台页面
+    //后台页面 ========
     app.get('/init', User.init);//初始化数据
     app.post('/user_init', User.user_init);//提交-初始化数据
-    app.get('/login', User.login);//页面登陆
-    app.post('/admin/login', User.signin);//登录校验
-    app.get('/admin', Admin.index);
-    app.get('/admin/contact', Contact.contact);
-    app.post('/admin/contact', Contact.contact_post);
+
+    app.get('/login', User.login);//页面登陆 
+    app.post('/login', User.signin);//登录校验
+
+    app.get('/admin', Admin.index);//后台框架页面
+
+    app.get('/admin/contact', Contact.contact);//后台管理 - 联系我们
+    app.post('/admin/contact', Contact.contact_post);//后台管理 - 联系我们 - 提交数据
 
     //404页面  - 这个要放到最后面
     app.get('/*', Index.undefineds);
