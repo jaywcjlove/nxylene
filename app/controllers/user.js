@@ -80,3 +80,9 @@ exports.signin = function(req, res){
     })
 
 }
+
+//登出页面 = 注销页面
+exports.logout = function(req,res){
+    delete req.session.user;
+    res.redirect('/login')
+}

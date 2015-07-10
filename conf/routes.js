@@ -27,6 +27,8 @@ module.exports = function (app) {
 
     app.get('/login', User.login);//页面登陆 
     app.post('/login', User.signin);//登录校验
+    
+    app.get('/logout', User.logout);//登出页面 = 注销页面
 
     app.get('/admin', Admin.index);//后台框架页面
 
