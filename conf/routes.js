@@ -12,6 +12,13 @@ module.exports = function (app) {
     // request 中包含了浏览器传来的各种信息，比如 query 啊，body 啊，headers 啊之类的，都可以通过 req 对象访问到。
     // res 对象，我们一般不从里面取信息，而是通过它来定制我们向浏览器输出的信息，比如 header 信息，比如想要向浏览器输出的内容
 
+    //对用户的预处理
+    app.use(function(req,res,next){
+        var _user = req.session.user;
+        res.locals.user = _user;
+        return next()
+    })
+
     //首页
     app.get('/', Index.index);
 
@@ -27,7 +34,7 @@ module.exports = function (app) {
 
     app.get('/login', User.login);//页面登陆 
     app.post('/login', User.signin);//登录校验
-    
+
     app.get('/logout', User.logout);//登出页面 = 注销页面
 
     app.get('/admin', Admin.index);//后台框架页面
