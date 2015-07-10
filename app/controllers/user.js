@@ -1,7 +1,7 @@
 var User = require('../models/user.js');
 var _ = require('underscore');
 
-
+//页面登陆
 exports.login =function(req, res){
     User.find({},function(err, user){
         if(err) console.log(err);
@@ -15,8 +15,8 @@ exports.login =function(req, res){
     })
 }
 
-
-exports.init = function(req, res){//初始化数据
+//初始化数据
+exports.init = function(req, res){
     User.find({},function(err, user){
         if(err) console.log(err);
         if(user.length>0){
@@ -31,8 +31,8 @@ exports.init = function(req, res){//初始化数据
         }
     })
 }
-
-exports.user_init = function(req, res){//创建一个用户
+//创建一个用户
+exports.user_init = function(req, res){
     var _content = req.body.name,
         _user ;
     User.find({},function(err, user){
@@ -67,6 +67,7 @@ exports.signin = function(req, res){
                 console.log("Password is Match！密码比对成功！");
                 return res.redirect('/admin');  
             } else console.log("Password is not Match！密码比对失败");
+            return res.redirect('/login');
         })
     })
 
