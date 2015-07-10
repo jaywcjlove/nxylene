@@ -2,7 +2,7 @@
 <h1 class="articleTitle"><%=title%></h1>
 
 <div class="auth-form-body">
-    <form action="/login" method="post">
+    <form method="post">
         <div class="form-group">
             <label for="inputTitle">用户名：</label>
             <input type="text" name="name" class="form-control" value="nxylene" placeholder="请输入用户名">
@@ -11,7 +11,7 @@
             <label for="contents">密码：</label>
             <input type="password" name="password" class="form-control" placeholder="请输入密码">
         </div>
-        <input class="btn btn-default" type="submit" value="登陆" />
+        <input class="btn btn-default" type="button" value="登陆" />
     </form>
 </div>
 <% include footer %>

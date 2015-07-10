@@ -13,6 +13,10 @@ module.exports = (grunt) ->
                         'themes/default/source/MDEditor/build/MDEditor.min.js',
                         'themes/default/source/js/contact.js'
                     ]
+                    'themes/default/source/build/login.min.js': [
+                        'bower_components/jslite/build/JSLite.min.js',
+                        'themes/default/source/js/login.js'
+                    ]
         stylus:
             options: 
                 linenos: false

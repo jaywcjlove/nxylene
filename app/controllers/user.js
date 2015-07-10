@@ -57,6 +57,8 @@ exports.signin = function(req, res){
     var name =_user.name
     var password = _user.password
 
+    console.log("req.body --- :",req.body);
+
     User.findOne({name:name},function(err,user){
         if(err) console.log(err);
         if(!user) return res.redirect('/login');
@@ -65,9 +67,15 @@ exports.signin = function(req, res){
             if(isMatch){
                 req.session.user = user
                 console.log("Password is Match！密码比对成功！");
-                return res.redirect('/admin');  
+                return res.send({
+                    code:0,
+                    data:{}
+                });
             } else console.log("Password is not Match！密码比对失败");
-            return res.redirect('/login');
+            return res.send({
+                code:-1,
+                massege:"用户名或密码错误！"
+            });
         })
     })
 
