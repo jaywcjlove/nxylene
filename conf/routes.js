@@ -18,6 +18,8 @@ module.exports = function (app) {
         //存储用户登陆信息 session
         _user = req.session.user;
         res.locals.user = _user;
+        //判断是否登陆如果登陆直接跳转后台【管理界面】
+        if(_user && req.url === '/login') return res.redirect('/admin');
         //针对所后台页面判断是否登陆，未登陆的跳转到登陆页面
         if(reg.test(req.url)&&!_user) return res.redirect('/login');
         return next()
