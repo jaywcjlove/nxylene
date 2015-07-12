@@ -61,7 +61,10 @@ exports.signin = function(req, res){
 
     User.findOne({name:name},function(err,user){
         if(err) console.log(err);
-        if(!user) return res.redirect('/login');
+        if(!user) return res.send({
+            code:-1,
+            massege:"用户名不存在"
+        });
         user.comparePassword(password,function(err,isMatch){
             if(err) console.log(err);
             if(isMatch){
@@ -74,7 +77,7 @@ exports.signin = function(req, res){
             } else console.log("Password is not Match！密码比对失败");
             return res.send({
                 code:-1,
-                massege:"用户名或密码错误！"
+                massege:"密码错误"
             });
         })
     })
