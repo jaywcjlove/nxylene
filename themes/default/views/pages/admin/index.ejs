@@ -47,109 +47,95 @@
 
 
 <script type="text/javascript">
-(function (window) {
-    function $I(str){
-        return document.getElementById(str);
-    }
-    function showNav(arr){
-        if (arr.children.length>1) {
-            var span =arr.children[0].getElementsByTagName("span");
-            if(arr.children[1].style.display==""||arr.children[1].style.display=="none"){
-                arr.children[1].style.display="block";
-                if (span.length>0) {
-                    span[0].className = "arrow unarrow";
-                };
-            }else{
-                arr.children[1].style.display="none";
-                if (span.length>0) {
-                    span[0].className = "arrow";
-                };
+(function(window){
+    /**
+     * [addEvent 绑定事件]
+     * @param {[type]} object [HTML节点]
+     * @param {[type]} event  [事件类型]
+     * @param {[type]} method [执行函数]
+     */
+    function addEvent(object, event, method) {
+        event = event.split(' ')
+        for(var i = 0;i<event.length;i++){
+            if (object.addEventListener){
+                object.addEventListener(event[i], method, false);
+            }else if(object.attachEvent){
+                object.attachEvent('on'+event[i], function(){ method(window.event); });
             }
-        };
-
-    }
-    function nav(){
-        var nav = $I("nav");
-        if (nav) {
-            var li = nav.children;
-            if (li.length>0) {
-                for (var i = 0; i < li.length; i++) {
-                    (function(e){
-                        li[e].children[0].onclick=function(){
-                            showNav(li[e])
-                        }
-                    })(i)
-                };
-            };
-
-            var lim = nav.getElementsByTagName("LI");
-            if (lim.length>0) {
-                for (var i = 0; i < lim.length; i++) {
-                    if (lim[i].children.length<2){
-                        (function(e){
-                            lim[e].onclick=function(){
-                                for (var f = 0; f < lim.length; f++) {
-                                    lim[f].className="";
-                                };
-                                lim[e].className="ok";
-                            }
-                        })(i);
-                        var hre=lim[i].children[0].getAttribute("href");
-
-                        if(hre.indexOf("javascript:atcc.loadFrame")>0){
-
-                        }else if (lim[i].children[0].getAttribute("href").length<2) {
-                            lim[i].children[0].setAttribute('href',"#"); 
-                        }else{
-                            lim[i].children[0].setAttribute('href',"javascript:atcc.loadFrame('"+hre+"')"); 
-                        }
-                    }
-                };
-                iframeLoad();
-            };
-
-        };
-    }
-    function load(){
-        var con = $I("content");
-        if (con) {
-            con.style.height = (document.documentElement.clientHeight - 41) + "px";
-        };
-        nav();
-    }
-    function loadFrame(url){
-        var ifm = $I("openurl");
-        if (ifm) {
-            $I("loading").style.display="block";
-            ifm.src = url
-
-        };
-    }
-    function iframeLoad(){
-        var ifm = $I("openurl");
-
-        if (!ifm) return;
-        if (ifm.attachEvent){ 
-            ifm.attachEvent("onload", function(){ 
-                $I("loading").style.display="none";
-            }); 
-        } else { 
-            ifm.onload = function(){ 
-                $I("loading").style.display="none";
-            }; 
         }
     }
-    window.atcc={
-        load:load,
-        loadFrame:loadFrame
+
+    function FM(){
+        this.E = function(str){return document.getElementById(str);}
+        this.nav = this.E('nav')
+        this.contents = this.E('content')
+        this.frame = this.E('openurl')
+        this.loading = this.E('loading')
+
     }
-})(window)
 
+    FM.prototype = {
+        load:function(){
+            if(this.contents) 
+                this.contents.style.height = (document.documentElement.clientHeight - 41) + "px";
+            return this;
+        },
+        menu:function(){
+            if(!this.nav) return this;
+            var nav = this.nav,self = this,
+                li = nav.getElementsByTagName("LI"),
+                a = nav.getElementsByTagName("A"),
+                loading = this.loading,
+                href='';
 
-window.onresize=function(){
-    atcc.load();
-}
-atcc.load();
+            if(a.length>0) {
+                for (var i = 0; i < a.length; i++) {
+                    href = a[i].getAttribute("href");
+                    if(href.length>2) 
+                        a[i].setAttribute('data-url',href),
+                        a[i].setAttribute('href',"#"); 
+                };
+            }
+
+            if(li.length>0) for (var i = 0; i < li.length; i++) {
+                addEvent(li[i],'click',function(){
+                    for (var w = 0; w < li.length; w++) li[w].className='';
+
+                    var url = this.children[0].getAttribute('data-url')
+                        ult = this.children[1]
+
+                    if(url){
+                        this.className="ok";
+                        loading.style.display="block";
+                        self.frame.src = url;
+                    }
+                    if(this.children.length>1 && ult){
+                        (ult.style.display === '' || ult.style.display === 'block') ? ult.style.display='block' : ult.style.display='none'
+                    }
+                })
+            };
+            return this;
+        },
+        loadframe:function(){
+            var frame = this.frame,
+                loading = this.loading;
+
+            if(frame) addEvent(frame,'load',function(){ loading.style.display="none"; });
+            return this;
+        }
+    }
+
+    var frame = new FM();
+    frame.loadframe()
+
+    window.onload = function(){
+        frame.load().menu();
+    }
+    window.onresize = function(){
+        frame.load();
+    }
+
+})(window);
 </script>
 </body>
 </html>
