@@ -99,12 +99,12 @@
 
             if(li.length>0) for (var i = 0; i < li.length; i++) {
                 addEvent(li[i],'click',function(){
-                    for (var w = 0; w < li.length; w++) li[w].className='';
 
                     var url = this.children[0].getAttribute('data-url')
                         ult = this.children[1]
 
                     if(url){
+                        for (var w = 0; w < li.length; w++) li[w].className='';
                         this.className="ok";
                         loading.style.display="block";
                         self.frame.src = url;
