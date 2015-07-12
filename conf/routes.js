@@ -14,8 +14,12 @@ module.exports = function (app) {
 
     //对用户的预处理
     app.use(function(req,res,next){
-        var _user = req.session.user;
+        var _user,reg = new RegExp(/^\/admin.*/);
+        //存储用户登陆信息 session
+        _user = req.session.user;
         res.locals.user = _user;
+        //针对所后台页面判断是否登陆，未登陆的跳转到登陆页面
+        if(reg.test(req.url)&&!_user) return res.redirect('/login');
         return next()
     })
 
