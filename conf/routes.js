@@ -2,6 +2,8 @@ var Index = require('../app/controllers/index')
 var Detail = require('../app/controllers/detail')
 var Admin = require('../app/controllers/admin')
 var Contact = require('../app/controllers/contact')
+var Aboutus = require('../app/controllers/aboutus')
+var Jobs = require('../app/controllers/jobs')
 var User = require('../app/controllers/user')
 
 module.exports = function (app) {
@@ -47,6 +49,12 @@ module.exports = function (app) {
 
     app.get('/admin/contact', Contact.contact);//后台管理 - 联系我们
     app.post('/admin/contact', Contact.contact_post);//后台管理 - 联系我们 - 提交数据
+
+    app.get('/admin/aboutus', Aboutus.aboutus);//后台管理 - 联系我们
+    app.post('/admin/aboutus', Aboutus.aboutus_post);//后台管理 - 联系我们 - 提交数据
+
+    app.get('/admin/jobs', Jobs.jobs);//后台管理 - 工作机会
+    app.post('/admin/jobs', Jobs.jobs_post);//后台管理 - 联系我们 - 工作机会
 
     //404页面  - 这个要放到最后面
     app.get('/*', Index.undefineds);
