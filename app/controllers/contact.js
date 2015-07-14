@@ -1,9 +1,9 @@
-var Contact = require('../models/contact.js');
+var Modulepage = require('../models/modulepage.js');
 var _ = require('underscore');
 
 // 客户浏览页面
 exports.index = function(req,res){
-    Contact.find({
+    Modulepage.find({
         type:"contact"
     },function(err, contact) {
         var data = {}
@@ -26,7 +26,7 @@ exports.index = function(req,res){
 
 //admin 预览页面
 exports.contact =function(req, res){
-    Contact.find({
+    Modulepage.find({
         type:"contact"
     },function(err, contact) {
         var data = {}
@@ -54,23 +54,22 @@ exports.contact_post=function(req,res){
         _type = req.body.type,
         _contact;
 
-    Contact.find({
+    Modulepage.find({
         type:_type
     },function(err, contact) {
         if (err) {
             console.log(err);
         }
-        console.log("一共%s条数据。",contact.length);
 
         if(contact.length === 0){
-            _contact = new Contact(req.body);
+            _contact = new Modulepage(req.body);
             _contact.save(function(err,contact){
                 if(err) console.log(err);
                 console.log("添加一条数据");  
             })
         }else{
             _contact = _.extend(contact, req.body)
-            Contact.update({
+            Modulepage.update({
                 type:_type
             },_contact,{
                 upsert : true

@@ -1,5 +1,5 @@
 var mongoose = require("mongoose")
-var ContactSchema = new mongoose.Schema({
+var ModulepageSchema = new mongoose.Schema({
     title:String,
     type:String,
     contents:String,
@@ -15,7 +15,7 @@ var ContactSchema = new mongoose.Schema({
     }
 })
 
-ContactSchema.pre('save', function(next) {
+ModulepageSchema.pre('save', function(next) {
     if (this.isNew) {
         this.meta.createAt = Date.now();
         this.meta.updateAt = Date.now();
@@ -26,7 +26,7 @@ ContactSchema.pre('save', function(next) {
 });
 
 
-ContactSchema.statics = {
+ModulepageSchema.statics = {
     fetch:function(cb){
         return this.find({}).sort('meta.updateAt').exec(cd)
     },
@@ -35,5 +35,5 @@ ContactSchema.statics = {
     }
 }
 
-module.exports = ContactSchema
+module.exports = ModulepageSchema
     
