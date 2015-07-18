@@ -36,25 +36,31 @@ module.exports = function (app) {
     //联系我们
     app.get('/contact', Contact.index);
 
-    //后台页面 ========
-    app.get('/init', User.init);//初始化数据
-    app.post('/user_init', User.user_init);//提交-初始化数据
+    //后台页面 - 初始化数据
+    app.get('/init', User.init)//初始化数据
+       .post('/user_init', User.user_init);//POST提交-初始化数据
 
-    app.get('/login', User.login);//页面登陆 
-    app.post('/login', User.signin);//登录校验
+    //后台管理 - 页面登陆  
+    app.get('/login', User.login) //post提交登录校验
+       .post('/login', User.signin);
 
-    app.get('/logout', User.logout);//登出页面 = 注销页面
+    //后台管理 - 登出页面/注销页面
+    app.get('/logout', User.logout);
 
-    app.get('/admin', Admin.index);//后台框架页面
+    //后台管理 - 框架页面
+    app.get('/admin', Admin.index);
 
-    app.get('/admin/contact', Contact.contact);//后台管理 - 联系我们
-    app.post('/admin/contact', Contact.contact_post);//后台管理 - 联系我们 - 提交数据
+    //后台管理 - 联系我们 
+    app.get('/admin/contact', Contact.contact) //编辑页面展示
+       .post('/admin/contact', Contact.contact_post); //提交数据
 
-    app.get('/admin/aboutus', Aboutus.aboutus);//后台管理 - 联系我们
-    app.post('/admin/aboutus', Aboutus.aboutus_post);//后台管理 - 联系我们 - 提交数据
+    //后台管理 - 关于我们 
+    app.get('/admin/aboutus', Aboutus.aboutus) //编辑页面展示
+       .post('/admin/aboutus', Aboutus.aboutus_post); //提交数据
 
-    app.get('/admin/jobs', Jobs.jobs);//后台管理 - 工作机会
-    app.post('/admin/jobs', Jobs.jobs_post);//后台管理 - 联系我们 - 工作机会
+    //后台管理 - 工作机会
+    app.get('/admin/jobs', Jobs.jobs) //编辑页面展示
+       .post('/admin/jobs', Jobs.jobs_post); //提交数据
 
     //404页面  - 这个要放到最后面
     app.get('/*', Index.undefineds);
