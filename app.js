@@ -41,7 +41,7 @@ app.use(expressSession({
         url:dbUrl,
         collection:'sessions'
     }),
-    cookie: {maxAge: 600000 },//设置maxAge是600000ms，即10分钟后session和相应的cookie失效过期
+    cookie: {maxAge: 30*60*1000 },//设置maxAge是600000ms，即10分钟后session和相应的cookie失效过期
     resave: true, 
     saveUninitialized: true
 }))
