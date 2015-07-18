@@ -62,7 +62,7 @@ module.exports = (grunt) ->
                     debug:true
                     ext: 'js,coffee,ejs'
                     watch: ['*','themes/default/views/*']
-                    delay: 500
+                    delay: 1
                     legacyWatch: true
         concurrent: 
             target: 
