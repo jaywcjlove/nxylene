@@ -8,10 +8,10 @@ module.exports = (grunt) ->
                     mangle: true #不混淆变量名
                     compress:false #打开或关闭使用默认选项源压缩。
                 files:
-                    'themes/default/source/build/contact.min.js': [
+                    'themes/default/source/build/modulepage.min.js': [
                         'bower_components/jslite/build/JSLite.min.js',
                         'themes/default/source/MDEditor/build/MDEditor.min.js',
-                        'themes/default/source/js/contact.js'
+                        'themes/default/source/js/modulepage.js'
                     ]
                     'themes/default/source/build/login.min.js': [
                         'bower_components/jslite/build/JSLite.min.js',

@@ -5,6 +5,7 @@ var Contact = require('../app/controllers/contact')
 var Aboutus = require('../app/controllers/aboutus')
 var Jobs = require('../app/controllers/jobs')
 var User = require('../app/controllers/user')
+var News = require('../app/controllers/news')
 
 module.exports = function (app) {
 
@@ -61,6 +62,12 @@ module.exports = function (app) {
     //后台管理 - 工作机会
     app.get('/admin/jobs', Jobs.jobs) //编辑页面展示
        .post('/admin/jobs', Jobs.jobs_post); //提交数据
+
+    //后台管理 - 新闻页面
+    app.get('/admin/news_list', News.list) //后台新闻列表页面
+       .get('/admin/news/:id', News.change) //修改新闻
+       .get('/admin/news', News.addView) //添加新的新闻 - 展示
+       .post('/admin/news', News.add); //添加新的新闻 - 提交数据
 
     //404页面  - 这个要放到最后面
     app.get('/*', Index.undefineds);
