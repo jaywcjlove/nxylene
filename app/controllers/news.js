@@ -18,10 +18,10 @@ exports.editorView = function(req, res){
     if(_id){
         News.findById(_id,function(err,news){
             if(err) console.log(err);
-            if(!news || news.length===0) res.redirect('./');
+            if(!news) res.redirect('./');
             else res.render('admin/news_edit', { 
                 title: '编辑新闻页面',
-                data:news[0]
+                data:news
             });
         })
     }else{
