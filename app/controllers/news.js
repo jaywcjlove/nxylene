@@ -16,9 +16,7 @@ exports.list = function(req,res){
 exports.editorView = function(req, res){
     var _id = req.params.id
     if(_id){
-        News.find({
-            _id : _id
-        },function(err,news){
+        News.findById(_id,function(err,news){
             if(err) console.log(err);
             if(!news || news.length===0) res.redirect('./');
             else res.render('admin/news_edit', { 
@@ -54,9 +52,7 @@ exports.add = function(req,res){
             res.redirect('news/'+news._id)
         })
     }else{
-        News.find({
-            _id:_id
-        },function(err,news){
+        News.findById(_id,function(err,news){
             if(err) console.log(err);
             _news = _.extend(news, req.body)
             News.update({
@@ -69,4 +65,13 @@ exports.add = function(req,res){
             })
         })
     }
+}
+
+exports.deletes =function(req,res){
+    var _id = req.params.id
+    News.findById(_id,function(err,news){
+        if(err) console.log(err);
+        if(news) news.remove();
+        res.redirect('../../news_list')
+    })
 }

@@ -14,7 +14,7 @@
     <tbody>
         <% if(data&&data.length>0) { for(var i=0;i<data.length;i++){%>
         <tr>
-            <td><%=data[i].title%></td>
+            <td><a href="news/<%=data[i]._id%>"><%=data[i].title%></a></td>
             <td><%=data[i].meta.creatAt%></td>
             <td><%=data[i].meta.updateAt%></td>
             <%if(data[i].reprint_source){%>
@@ -23,7 +23,7 @@
                 <td>原创</td>
             <%}%>
             <td><%=data[i].tags%></td>
-            <td><a href="news/<%=data[i]._id%>">编辑</a></td>
+            <td><a href="news/<%=data[i]._id%>">编辑</a> | <a href="news/delete/<%=data[i]._id%>">删除</a></td>
         </tr>
         <%}  } else{%>
         <tr>
