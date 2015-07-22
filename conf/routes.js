@@ -65,8 +65,8 @@ module.exports = function (app) {
 
     //后台管理 - 新闻页面
     app.get('/admin/news_list', News.list) //后台新闻列表页面
-       .get('/admin/news/:id', News.change) //修改新闻
-       .get('/admin/news', News.addView) //添加新的新闻 - 展示
+       .get('/admin/news/:id', News.editorView) //修改新闻
+       .get('/admin/news', News.editorView) //添加新的新闻 - 展示
        .post('/admin/news', News.add); //添加新的新闻 - 提交数据
 
     //404页面  - 这个要放到最后面

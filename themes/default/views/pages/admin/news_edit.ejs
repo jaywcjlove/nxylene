@@ -1,7 +1,10 @@
 <% include header %>
 <h1 class="articleTitle"><%=title%></h1>
 <div class="wp">
-    <form action="news" method="post">
+    <form action="/admin/news" method="post">
+        <%if(data._id){%>
+            <input type="hidden" name="_id" value="<%=data._id%>">
+        <%}%>
         <input type="hidden" name="contents" value="">
         <div class="form-group">
             <label for="inputTitle">标题：</label>
@@ -22,7 +25,7 @@
 
         <div class="form-group">
             <label for="inputTitle">来源：</label>
-            <input type="title" name="reprint_source" class="form-control" value="<%=data.tags%>" placeholder="请输入标题">
+            <input type="title" name="reprint_source" class="form-control" value="<%=data.reprint_source%>" placeholder="请输入标题">
         </div>
 
         <input class="btn btn-default" type="submit" value="提交保存" />
