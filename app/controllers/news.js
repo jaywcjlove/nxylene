@@ -1,13 +1,23 @@
 var News = require('../models/news.js');
 var _ = require('underscore');
+var moment = require('moment');
 
 exports.list = function(req,res){
     News.fetch(function(err,news){
-        var _news_data = []
-        if(news && news.length>0) _news_data = news;
+        var _news_data = [],
+        _news_data = JSON.stringify(news);
+        _news_data = JSON.parse(_news_data)
+        _news_data = _.map(_news_data,function(item){
+            return _.extend(item,{
+                meta:{
+                    updateAt:moment(item.meta.updateAt).format('YYYY-MM-DD HH:mm:ss'),
+                    creatAt:moment(item.meta.creatAt).format('YYYY-MM-DD HH:mm:ss')
+                }
+            })
+        })
         res.render('admin/news_list', { 
             title: '新闻列表页面',
-            data:news
+            data:_news_data
         });
     })
 }
