@@ -55,11 +55,7 @@ exports.add = function(req,res){
         News.findById(_id,function(err,news){
             if(err) console.log(err);
             _news = _.extend(news, req.body)
-            News.update({
-                _id:_id
-            },_news,{
-                upsert : true
-            },function(error){
+            News.findByIdAndUpdate(_id,_news,function(error,wnews){
                 if(error) console.log(error);
                 res.redirect('news/'+news._id)
             })
