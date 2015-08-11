@@ -54,10 +54,9 @@ if ('dev' === app.get('env')) {
     app.use(morgan('dev'))//中间件日志
     mongoose.set('debug', true);
 }
-
-if ('VCAP_SERVICES' === app.get('env')) {
-    //mongoose.connect('mongodb://username:password@host:port/database?options...');
-    dbUrl = config.mongodb[0].credentials.uri
+if (process.env.VCAP_SERVICES) {
+    var db_config = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials;
+    dbUrl = db_config.uri
 }
 mongoose.connect(dbUrl);
 
