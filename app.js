@@ -9,13 +9,13 @@ var expressSession = require('express-session')//简单的基于会话中间件�
 var mongoose = require('mongoose');
 var mongoStore = require('connect-mongo')(expressSession)//将connect的session持久化到mongodb中的
 var port = process.env.PORT || 6001
+var config = require('./conf/_config.json')
 // 调用 express 实例，它是一个函数，不带参数调用时，会返回一个 express 实例，将这个变量赋予 app 变量。
 var app = express()
 
 var themes = 'default'
 var dbUrl = 'mongodb://localhost/nxylene'
 
-mongoose.connect(dbUrl);
 
 // app.set("view","./view/pages")
 app.set('views', __dirname + '/themes/' + themes + '/views/pages');
@@ -54,6 +54,17 @@ if ('dev' === app.get('env')) {
     app.use(morgan('dev'))//中间件日志
     mongoose.set('debug', true);
 }
+
+if (process.env.VCAP_SERVICES){
+    //mongoose.connect('mongodb://username:password@host:port/database?options...');
+    dbUrl = 'mongodb://'+
+        config[0].credentials.username+':'+
+        config[0].credentials.password+'@'+
+        config[0].credentials.host+':'+
+        config[0].credentials.port+'/nxylene'
+}
+
+mongoose.connect(dbUrl);
 
 // 定义好我们 app 的行为之后，让它监听本地的 3000 端口。
 // 这里的第二个函数是个回调函数，会在 listen 动作成功后执行，我们这里执行了一个命令行输出操作，告诉我们监听动作已完成。

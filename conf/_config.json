@@ -1,0 +1,20 @@
+{
+    "mongodb":[
+        {
+            "name": "mongodb",
+            "label": "mongodb",
+            "tags": [
+                "mongodb"
+            ],
+            "plan": "100mb-dev",
+            "credentials": {
+                "uri": "mongodb://ae980910-751d-4642-87ce-35561bb8394f:7MT69LufemrESGBZ79AQpQ@10.9.27.25:27017/8dc488ba-d03a-4d67-ab79-dca8cbe83d8e",
+                "username": "ae980910-751d-4642-87ce-35561bb8394f",
+                "password": "7MT69LufemrESGBZ79AQpQ",
+                "host": "10.9.27.25",
+                "port": 27017,
+                "name": "8dc488ba-d03a-4d67-ab79-dca8cbe83d8e"
+            }
+        }
+    ]
+}
