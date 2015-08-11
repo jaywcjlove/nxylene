@@ -56,8 +56,10 @@ if ('dev' === app.get('env')) {
 }
 if (process.env.VCAP_SERVICES) {
     var db_config = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials;
+    console.log(JSON.parse(process.env.VCAP_SERVICES));
     dbUrl = db_config.uri
 }
+console.log("message",dbUrl);
 mongoose.connect(dbUrl);
 
 // 定义好我们 app 的行为之后，让它监听本地的 3000 端口。
