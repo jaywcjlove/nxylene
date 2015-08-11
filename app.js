@@ -57,11 +57,7 @@ if ('dev' === app.get('env')) {
 
 if (process.env.VCAP_SERVICES){
     //mongoose.connect('mongodb://username:password@host:port/database?options...');
-    dbUrl = 'mongodb://'+
-        config[0].credentials.username+':'+
-        config[0].credentials.password+'@'+
-        config[0].credentials.host+':'+
-        config[0].credentials.port+'/nxylene'
+    dbUrl = config.mongodb[0].credentials.uri
 }
 
 mongoose.connect(dbUrl);
