@@ -1,6 +1,6 @@
 {
-  "name": "nodetest",
-  "version": "1.0.1",
+  "name": "nxylene",
+  "version": "1.0.2",
   "description": "学习nodejs",
   "scripts": {
     "start": "node ./app.js"
