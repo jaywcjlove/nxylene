@@ -24,7 +24,7 @@
     "marked": "^0.3.3",
     "method-override": "^2.3.3",
     "moment": "^2.10.3",
-    "mongoose": "^4.0.5",
+    "mongoose": "^4.1.2",
     "morgan": "^1.6.0",
     "superagent": "^1.2.0",
     "underscore": "^1.8.3"
