@@ -16,6 +16,10 @@ var app = express()
 var themes = 'default'
 var dbUrl = 'mongodb://localhost/nxylene'
 
+if (process.env.VCAP_SERVICES) {
+    var db_config = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials;
+    dbUrl = db_config.uri
+}
 
 // app.set("view","./view/pages")
 app.set('views', __dirname + '/themes/' + themes + '/views/pages');
@@ -54,12 +58,6 @@ if ('dev' === app.get('env')) {
     app.use(morgan('dev'))//中间件日志
     mongoose.set('debug', true);
 }
-if (process.env.VCAP_SERVICES) {
-    var db_config = JSON.parse(process.env.VCAP_SERVICES).mongodb[0].credentials;
-    console.log(JSON.parse(process.env.VCAP_SERVICES));
-    dbUrl = db_config.uri
-}
-console.log("message",dbUrl);
 var MongoDB = mongoose.connect(dbUrl).connection;
 MongoDB.on('error', function(err) { console.log("mongodb error::"+err.message); });
 MongoDB.once('open', function() {
