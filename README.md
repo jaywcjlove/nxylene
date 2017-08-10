@@ -96,7 +96,7 @@ CNPM：http://cnpmjs.org/ 、 http://npm.taobao.org/ (淘宝)
 - stylus：http://learnboost.github.io/stylus/
 - Yeoman：http://yeoman.io/
 - Socket.io：http://socket.io/
-- mocha：http://visionmedia.github.io/mocha/
+- mocha：http://mochajs.org/
 - uglifyjs：https://github.com/mishoo/UglifyJS2
 - shelljs：http://documentup.com/arturadib/shelljs
 
